@@ -5,9 +5,10 @@ import os
 from glob import glob
 import uuid
 import shutil
+from tqdm import tqdm
 
 def git_clone(repo_url, target_dir):
-    cmd = f"git clone {repo_url} {target_dir}"
+    cmd = f"git clone --depth 1 {repo_url} {target_dir} 2>&1"
     os.popen(cmd).read()
 
 def git_delete(repo_dir):
@@ -20,11 +21,10 @@ path = f'/tmp/code_sniffer_ai_tmp_{rnd}'
 
 cn_list = util.create_search_list()
 
-print(cn_list[0:15])
 if not os.path.exists('data/code_files'):
     os.mkdir('data/code_files')
     
-for index, row in df.iterrows():
+for index, row in tqdm(df.iterrows(), total=df.shape[0]):
     url = row['link']    
     git_clone(url, path)
     for file in glob(f"{path}/**/*.java", recursive=True):
@@ -42,8 +42,7 @@ for index, row in df.iterrows():
                 if (dir_str[-i] != class_str[-i]):
                     match = False
                     break
-            if match:
-                print(f"CLASS: {classname} IND: {ind}")
+            if match:                
                 shutil.copy(file, f"data/code_files/{cn_list[ind][1]}.java")
 
     git_delete(path)
