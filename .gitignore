@@ -1,1 +1,3 @@
 data/code_files/*
+.venv/
+__pycache__/
