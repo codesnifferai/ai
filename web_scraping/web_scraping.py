@@ -6,12 +6,23 @@ from glob import glob
 import uuid
 import shutil
 from tqdm import tqdm
+import requests
 
-def git_clone(repo_url, target_dir):
+def is_repo_okay(repo_url:str) -> bool:
+    try:
+        r=requests.head(repo_url)
+        if r.status_code == 200:
+            return True
+        else:
+            return False
+    except:
+        return False
+
+def git_clone(repo_url:str, target_dir:str) -> None:
     cmd = f"git clone --depth 1 {repo_url} {target_dir} 2>&1"
     os.popen(cmd).read()
 
-def git_delete(repo_dir):
+def git_delete(repo_dir: str) -> None:
     os.system(f'rm -rf -- "{repo_dir}"')
 
 df = pd.read_csv('./data/urls.csv')
@@ -26,6 +37,8 @@ if not os.path.exists('data/code_files'):
     
 for index, row in tqdm(df.iterrows(), total=df.shape[0]):
     url = row['link']    
+    if not is_repo_okay(url):
+        continue
     git_clone(url, path)
     for file in glob(f"{path}/**/*.java", recursive=True):
         classname = os.path.basename(file).split('.')[0]
