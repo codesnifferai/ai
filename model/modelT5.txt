@@ -1,7 +1,7 @@
-T5ForConditionalGeneration(
-  (shared): Embedding(32100, 512)
+T5Model(
+  (shared): Embedding(32128, 512)
   (encoder): T5Stack(
-    (embed_tokens): Embedding(32100, 512)
+    (embed_tokens): Embedding(32128, 512)
     (block): ModuleList(
       (0): T5Block(
         (layer): ModuleList(
@@ -57,7 +57,7 @@ T5ForConditionalGeneration(
     (dropout): Dropout(p=0.1, inplace=False)
   )
   (decoder): T5Stack(
-    (embed_tokens): Embedding(32100, 512)
+    (embed_tokens): Embedding(32128, 512)
     (block): ModuleList(
       (0): T5Block(
         (layer): ModuleList(
@@ -132,6 +132,4 @@ T5ForConditionalGeneration(
     (final_layer_norm): T5LayerNorm()
     (dropout): Dropout(p=0.1, inplace=False)
   )
-  (lm_head): Linear(in_features=512, out_features=32100, bias=False)
 )
-
