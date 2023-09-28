@@ -1,3 +1,7 @@
 data/code_files/*
 .venv/
 ./**/__pycache__/
+data/__pycache__/__init__.cpython-310.pyc
+data/__pycache__/dataset.cpython-310.pyc
+web_scraping/__pycache__/util.cpython-310.pyc
+model/__pycache__/sniffer.cpython-310.pyc
