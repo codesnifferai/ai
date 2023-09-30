@@ -47,6 +47,5 @@ class CodeSnifferDataset(Dataset):
         attention_mask = self.tokenized_data[idx]["attention_mask"]
 
         labels = self.code_labels.iloc[idx, 1:]
-        if self.target_transform:
-            labels = self.target_transform(labels)
+        labels = torch.tensor(labels, dtype=torch.int8)  # Convert to tensor
         return input_ids, attention_mask, labels
