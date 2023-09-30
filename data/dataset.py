@@ -16,7 +16,12 @@ class CodeSnifferDataset(Dataset):
 
 
     def tokenize_data(self):
-        self.tokenized_data_path = "tokenized_data.pt" 
+         # Get the directory of the current script
+        current_script_dir = os.path.dirname(os.path.abspath(__file__))
+    
+        # Join the directory with the filename to get the full path
+        self.tokenized_data_path = os.path.join(current_script_dir, "tokenized_data.pt")
+        
         if os.path.isfile(self.tokenized_data_path):
             return
         

@@ -1,5 +1,4 @@
 Address,Brain Class,Data Class,Futile Abstract Pipeline,Futile Hierarchy,God Class,Hierarchy Duplication,Model Class,Schizofrenic Class
 org.apache.hadoop.metrics2.sink.SqlServerSinkTest.java,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE
 org.apache.ambari.TestMapReduceJobHistoryUpdater.java,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE
-org.apache.ambari.log4j.hadoop.mapreduce.jobhistory.JobHistoryAppender$1.java,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE
 org.apache.ambari.log4j.hadoop.mapreduce.jobhistory.MapReduceJobHistoryUpdater.java,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE
