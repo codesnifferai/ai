@@ -9,23 +9,27 @@ if len(sys.argv) < 2:
 DATASET_DIR = sys.argv[1]
 
 for filename in os.listdir(DATASET_DIR):
-    f = os.path.join(DATASET_DIR, filename)
-    # checking if it is a file
+    try:
+        f = os.path.join(DATASET_DIR, filename)
+        # checking if it is a file
 
-    if os.path.isfile(f):
-        print(f)
-        with open(f, "r") as file:
-            string = file.read()
-        count_comment = 0            
-        start = string[0][0:2]
-        if start != '/*':
-            continue
-        match = re.search(r'\/\*(.|\s)*\*\/', string)
-        end = match.end()
-        string = string[end:]
-        with open(f, "r") as file:
-            file.write(string)
-
+        if os.path.isfile(f):
+            print(f)
+            with open(f, "r") as file:
+                string = file.read()
+            count_comment = 0            
+            start = string[0][0:2]
+            if start != '/*':
+                continue
+            match = re.search(r'\/\*(.|\s)*\*\/', string)
+            end = match.end()
+            string = string[end:]
+            with open(f, "r") as file:
+                file.write(string)
+    except Exception as e:
+        print(e)
+        print(f"Removing {f}.")
+        os.remove(f)
 
 
             
