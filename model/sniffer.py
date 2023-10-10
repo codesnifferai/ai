@@ -32,14 +32,6 @@ class CodeSnifferNetwork(nn.Module):
 
         encoder_outputs = self.t5_encoder(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
         attention_coefs = self.att_pool(encoder_outputs)
-        pooled_output = torch.matmul(encoder_outputs.transpose(-1, -2), attention_coefs).squeeze(-2)
-        print(f"Shape of pooled_output (BEFORE): {pooled_output.shape}")
-        
-        # Ensure pooled_output is of shape [batch_size, 512]
-        pooled_output = pooled_output.transpose(-1, -2).squeeze(-1)
-
+        pooled_output = torch.matmul(encoder_outputs.transpose(-1, -2), attention_coefs).squeeze(-1)
         probs = self.fc(pooled_output)
-        print(f"Shape of encoder_outputs: {encoder_outputs.shape}")
-        print(f"Shape of attention_coefs: {attention_coefs.shape}")
-        print(f"Shape of pooled_output (AFTER): {pooled_output.shape}")
         return probs
