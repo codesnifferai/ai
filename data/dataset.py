@@ -34,7 +34,7 @@ class CodeSnifferDataset(Dataset):
                 code_data = code_file.read()               # read whole file to a string
                 if self.transform:
                     code_data = self.transform(code_data)
-                input = self.tokenizer(code_data, return_tensors="pt", padding=True, truncation=True, max_length=512)
+                input = self.tokenizer(code_data, return_tensors="pt", padding="max_length", truncation=True, max_length=512)
                 tokenized_data.append(input)
             
         torch.save(tokenized_data, self.tokenized_data_path)
@@ -45,9 +45,10 @@ class CodeSnifferDataset(Dataset):
         return len(self.code_labels)
 
     def __getitem__(self, idx):
-        input_ids = self.tokenized_data[idx]["input_ids"]
-        attention_mask = self.tokenized_data[idx]["attention_mask"]
+        input_ids = self.tokenized_data[idx]["input_ids"].squeeze(0)
+        attention_mask = self.tokenized_data[idx]["attention_mask"].squeeze(0)
 
         labels = self.code_labels.iloc[idx, 1:]
-        labels = torch.tensor(labels, dtype=torch.int8)  # Convert to tensor
+        labels = labels.astype(int)
+        labels = torch.tensor(labels.values, dtype=torch.int8)  # Convert to tensor
         return input_ids, attention_mask, labels

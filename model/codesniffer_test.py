@@ -12,18 +12,26 @@ workers = 4
 
 dataset = CodeSnifferDataset('../data/filtered_data.csv', '../data/code_files')
 
+print("Instantiated dataset")
+
 ind = random.randrange(len(dataset))
 
-x, y = dataset[ind]
+input_ids, attention_mask, labels = dataset[ind]
 
-X, Y = DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=workers)
+print("Got one tensor")
+
+data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=workers)
+INPUT_IDS, ATTENTION_MASKS, LABELS = next(iter(data_loader))
+
+print("Got batch")
 
 model = CodeSnifferNetwork()
 model.eval()
-with torch.nograd():
+with torch.no_grad():
     print("One tensor: ")
-    y_pred = model.forward(x)
+    y_pred = model.forward(input_ids, attention_mask)
     print(y_pred)
 
     print("Batch: ")
-    Y_PRED = model.forward(X)
+    Y_PRED = model.forward(INPUT_IDS, ATTENTION_MASKS)
+    print(Y_PRED)
