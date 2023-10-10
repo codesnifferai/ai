@@ -6,3 +6,4 @@ data/__pycache__/dataset.cpython-310.pyc
 web_scraping/__pycache__/util.cpython-310.pyc
 model/__pycache__/sniffer.cpython-310.pyc
 model/__pycache__/train.cpython-310.pyc
+**/*.pt
