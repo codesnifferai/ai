@@ -18,10 +18,10 @@ def main(args):
     batch_size = args.BATCH_SIZE
     lr = args.LEARNING_RATE
     num_labels = args.NUM_LABELS
-    num_epochs = args.NUM_EPOCHS
+    num_epochs = args.EPOCHS
     device = args.DEVICE
     annotations_file = args.ANNOTATIONS_FILE
-    code_files_dir = args.CODE_FILES_DIR
+    code_files_dir = args.CODE_FILES
     workers = args.WORKERS
 
     dataset = CodeSnifferDataset(annotations_file=annotations_file, code_files_dir=code_files_dir)
