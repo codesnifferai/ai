@@ -3,6 +3,7 @@ import torch
 import pandas as pd
 from transformers import RobertaTokenizer
 from torch.utils.data import Dataset
+from tqdm import tqdm
 
 class CodeSnifferDataset(Dataset):
     def __init__(self, annotations_file, code_files_dir, transform=None, target_transform=None):
@@ -26,7 +27,8 @@ class CodeSnifferDataset(Dataset):
             return
         
         tokenized_data = []
-        for idx in range(len(self.code_labels)):
+        print("Tokenizing data...")
+        for idx in tqdm(range(len(self.code_labels))):
             code_file_path = os.path.join(self.code_files_dir, self.code_labels.iloc[idx, 0])
             with open(code_file_path, "r") as code_file:   # open text file in read mode
                 code_data = code_file.read()               # read whole file to a string
