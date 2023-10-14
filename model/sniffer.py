@@ -8,6 +8,10 @@ class CodeSnifferNetwork(nn.Module):
 
         self.t5_encoder = T5ForConditionalGeneration.from_pretrained('Salesforce/codet5-small').encoder
 
+        # Freezing the Transformer's encoder
+        for param in self.t5_encoder.parameters(): 
+            param.requires_grad = False
+
         # Sequence pooling taken from https://browse.arxiv.org/pdf/2104.05704.pdf
         self.att_pool = nn.Sequential(
             nn.Linear(self.t5_encoder.config.d_model, 1),
