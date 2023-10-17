@@ -4,16 +4,20 @@ sys.path.append('../')
 from data.dataset import CodeSnifferDataset
 from torch.utils.data import DataLoader
 from torch.utils.data import random_split
-from sniffer import CodeSnifferNetwork
+from model.modules.sniffer import CodeSnifferNetwork
 import torch
 import torch.optim as optim
-from train import train_model
+from model.modules.train import train_model
+from model.modules.save import save_model, save_statistics, train_val_plot
 import argparse
+import os
 
 random.seed(90)
 
 
 def main(args):
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+
     train_percent = args.TRAIN_PERCENT
     batch_size = args.BATCH_SIZE
     lr = args.LEARNING_RATE
@@ -41,7 +45,13 @@ def main(args):
     criterion = torch.nn.BCELoss()
     optimizer = optim.Adam(codeModel.parameters(), lr=lr)
 
-    train_model(codeModel, dataloaders, criterion, optimizer, device, num_epochs)
+    codeModel, best_preds, best_true, val_acc_history, \
+    val_loss_history, train_acc_history, train_loss_history = train_model(codeModel, dataloaders, criterion, optimizer, device, num_epochs)
+
+    save_model(codeModel, current_dir)
+    save_statistics(current_dir, val_acc_history, val_loss_history, train_acc_history, train_loss_history, best_true, best_preds)
+    train_val_plot(current_dir, train_acc_history, val_acc_history, "Accuracy", "Train vs Val")
+    train_val_plot(current_dir, train_loss_history, val_loss_history, "Loss", "Train vs Val")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Train a model on some data.")
