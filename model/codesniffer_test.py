@@ -3,7 +3,7 @@ import sys
 sys.path.append('../')
 from data.dataset import CodeSnifferDataset
 from torch.utils.data import DataLoader
-from sniffer import CodeSnifferNetwork
+from model.modules.sniffer import CodeSnifferNetwork
 import torch
 
 random.seed(90)
