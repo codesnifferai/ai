@@ -50,5 +50,5 @@ class CodeSnifferDataset(Dataset):
 
         labels = self.code_labels.iloc[idx, 1:]
         labels = labels.astype(int)
-        labels = torch.tensor(labels.values, dtype=torch.int8)  # Convert to tensor
+        labels = torch.tensor(labels.values, dtype=torch.float32)  # Convert to tensor
         return input_ids, attention_mask, labels
