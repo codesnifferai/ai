@@ -35,7 +35,7 @@ def main(args):
 
     dataloaders = {"train": train_dataloader, "val": test_dataloader}
 
-    codeModel = CodeSnifferNetwork(num_labels=num_labels)
+    codeModel = CodeSnifferNetwork(num_labels=num_labels).to(device)
     # codeModel = T5ForConditionalGeneration.from_pretrained('Salesforce/codet5-small')
 
     criterion = torch.nn.BCELoss()
