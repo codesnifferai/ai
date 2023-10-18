@@ -52,18 +52,17 @@ def save_statistics(current_dir, val_acc_hist, val_loss_hist, train_acc_hist, tr
     confusion_df.to_csv(confusion_path, index=False)
 
 def train_val_plot(current_dir, arrTrain, arrVal, title, stat):
-    # Convert tensors to numpy arrays (if they are tensors) and then plot
-    arrVal_np = arrVal.cpu().numpy() if torch.is_tensor(arrVal) else arrVal
-    arrTrain_np = arrTrain.cpu().numpy() if torch.is_tensor(arrTrain) else arrTrain
-
+    for i in range(len(arrTrain)):
+        if (torch.is_tensor(arrTrain[i])): arrTrain[i] = arrTrain[i].cpu().numpy()
+        if (torch.is_tensor(arrVal[i])): arrVal[i] = arrVal[i].cpu().numpy()
     plot_path = os.path.join(current_dir, f"plots/{title} - {stat}.png")
     make_path(plot_path)
     plt.figure(figsize=(6, 5))
     plt.title(title)
     plt.xlabel('Epoch')
     plt.ylabel(stat)
-    plt.plot(arrVal_np, label='Validation ' + stat)
-    plt.plot(arrTrain_np, label='Training ' + stat)
+    plt.plot(arrVal, label='Validation ' + stat)
+    plt.plot(arrTrain, label='Training ' + stat)
     plt.legend(ncol=4, bbox_to_anchor=(0.5,-0.5), loc='lower center', edgecolor='w')
     plt.tight_layout()
     plt.savefig(plot_path)
