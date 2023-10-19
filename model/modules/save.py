@@ -32,7 +32,7 @@ def save_statistics(current_dir, val_acc_hist, val_loss_hist, train_acc_hist, tr
 
 
     # Save the train accuracy history
-    train_acc_hist_np = np.array([h.item() for h in train_acc_hist])
+    train_acc_hist_np = np.array([h for h in train_acc_hist])
     train_acc_hist_path = os.path.join(current_dir, "statistics/train_acc_history.csv")
     make_path(train_acc_hist_path)
     np.savetxt(train_acc_hist_path, train_acc_hist_np, delimiter=",")
