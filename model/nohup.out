@@ -1,0 +1,383 @@
+Epoch 0/0
+----------
+train Loss: 0.0581 Acc: 7.8547
+val Loss: 0.0490 Acc: 7.8703
+
+Training complete in 9m 29s
+Best val Acc: 7.870313
+Traceback (most recent call last):
+  File "/home/heitorc62/ai/model/codesniffer_train.py", line 80, in <module>
+    main(args)
+  File "/home/heitorc62/ai/model/codesniffer_train.py", line 53, in main
+    train_val_plot(current_dir, train_acc_history, val_acc_history, "Accuracy", "Train vs Val")
+  File "/home/heitorc62/ai/model/../model/modules/save.py", line 65, in train_val_plot
+    plt.plot(arrVal_np, label='Validation ' + stat)
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/matplotlib/pyplot.py", line 3578, in plot
+    return gca().plot(
+           ^^^^^^^^^^^
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/matplotlib/axes/_axes.py", line 1721, in plot
+    lines = [*self._get_lines(self, *args, data=data, **kwargs)]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/matplotlib/axes/_base.py", line 303, in __call__
+    yield from self._plot_args(
+               ^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/matplotlib/axes/_base.py", line 491, in _plot_args
+    x, y = index_of(xy[-1])
+           ^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/matplotlib/cbook.py", line 1666, in index_of
+    y = _check_1d(y)
+        ^^^^^^^^^^^^
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/matplotlib/cbook.py", line 1358, in _check_1d
+    return np.atleast_1d(x)
+           ^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/numpy/core/shape_base.py", line 65, in atleast_1d
+    ary = asanyarray(ary)
+          ^^^^^^^^^^^^^^^
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/torch/_tensor.py", line 1030, in __array__
+    return self.numpy()
+           ^^^^^^^^^^^^
+TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+Traceback (most recent call last):
+  File "/home/heitorc62/ai/model/codesniffer_train.py", line 4, in <module>
+    from data.dataset import CodeSnifferDataset
+  File "/home/heitorc62/ai/model/../data/dataset.py", line 4, in <module>
+    from transformers import RobertaTokenizer
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/transformers/__init__.py", line 26, in <module>
+    from . import dependency_versions_check
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/transformers/dependency_versions_check.py", line 57, in <module>
+    require_version_core(deps[pkg])
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/transformers/utils/versions.py", line 117, in require_version_core
+    return require_version(requirement, hint)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/ai/.venv/lib/python3.11/site-packages/transformers/utils/versions.py", line 102, in require_version
+    got_ver = importlib.metadata.version(pkg)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/miniconda3/lib/python3.11/importlib/metadata/__init__.py", line 1008, in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/miniconda3/lib/python3.11/importlib/metadata/__init__.py", line 632, in version
+    return self.metadata['Version']
+           ^^^^^^^^^^^^^
+  File "/home/heitorc62/miniconda3/lib/python3.11/importlib/metadata/__init__.py", line 617, in metadata
+    return _adapters.Message(email.message_from_string(text))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/miniconda3/lib/python3.11/email/__init__.py", line 38, in message_from_string
+    return Parser(*args, **kws).parsestr(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/miniconda3/lib/python3.11/email/parser.py", line 67, in parsestr
+    return self.parse(StringIO(text), headersonly=headersonly)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/miniconda3/lib/python3.11/email/parser.py", line 56, in parse
+    feedparser.feed(data)
+  File "/home/heitorc62/miniconda3/lib/python3.11/email/feedparser.py", line 176, in feed
+    self._call_parse()
+  File "/home/heitorc62/miniconda3/lib/python3.11/email/feedparser.py", line 180, in _call_parse
+    self._parse()
+  File "/home/heitorc62/miniconda3/lib/python3.11/email/feedparser.py", line 228, in _parsegen
+    if not headerRE.match(line):
+           ^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Epoch 0/0
+----------
+train Loss: 0.0595 Acc: 7.8517
+val Loss: 0.0481 Acc: 7.8692
+
+Training complete in 9m 28s
+Best val Acc: 7.869196
+arrTrain: [tensor(7.8517, device='cuda:0', dtype=torch.float64)]
+arrTrain type: <class 'list'>
+----------------------------------
+arrVal: [tensor(7.8692, device='cuda:0', dtype=torch.float64)]
+arrTrain type: <class 'list'>
+Traceback (most recent call last):
+  File "/home/heitorc62/ai/model/codesniffer_train.py", line 80, in <module>
+    main(args)
+  File "/home/heitorc62/ai/model/codesniffer_train.py", line 53, in main
+    train_val_plot(current_dir, train_acc_history, val_acc_history, "Accuracy", "Train vs Val")
+  File "/home/heitorc62/ai/model/../model/modules/save.py", line 68, in train_val_plot
+    plt.plot(arrVal_np, label='Validation ' + stat)
+             ^^^^^^^^^
+NameError: name 'arrVal_np' is not defined. Did you mean: 'arrVal'?
+Epoch 0/0
+----------
+train Loss: 0.0609 Acc: 7.8498
+Traceback (most recent call last):
+  File "/home/heitorc62/ai/model/codesniffer_train.py", line 80, in <module>
+    main(args)
+  File "/home/heitorc62/ai/model/codesniffer_train.py", line 49, in main
+    val_loss_history, train_acc_history, train_loss_history = train_model(codeModel, dataloaders, criterion, optimizer, device, num_epochs)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/heitorc62/ai/model/../model/modules/train.py", line 89, in train_model
+    train_loss_history.append(epoch_loss.cpu().numpy())
+                              ^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'cpu'
+Traceback (most recent call last):
+  File "/home/heitorc62/ai/model/codesniffer_train.py", line 11, in <module>
+    from model.modules.save import save_model, save_statistics, train_val_plot
+  File "/home/heitorc62/ai/model/../model/modules/save.py", line 57
+    for i in range len(arrTrain):
+                   ^^^
+SyntaxError: invalid syntax
+Epoch 0/0
+----------
+train Loss: 0.0582 Acc: 7.8540
+val Loss: 0.0503 Acc: 7.8657
+
+Training complete in 9m 30s
+Best val Acc: 7.865669
+arrTrain: [tensor(7.8540, device='cuda:0', dtype=torch.float64)]
+arrVal: [tensor(7.8657, device='cuda:0', dtype=torch.float64)]
+arrTrain: [0.05819370632100701]
+arrVal: [0.05032459626932661]
+Epoch 0/49
+----------
+train Loss: 0.0593 Acc: 7.8529
+val Loss: 0.0482 Acc: 7.8716
+
+Epoch 1/49
+----------
+train Loss: 0.0493 Acc: 7.8673
+val Loss: 0.0462 Acc: 7.8741
+
+Epoch 2/49
+----------
+train Loss: 0.0474 Acc: 7.8704
+val Loss: 0.0462 Acc: 7.8719
+
+Epoch 3/49
+----------
+train Loss: 0.0462 Acc: 7.8726
+val Loss: 0.0457 Acc: 7.8719
+
+Epoch 4/49
+----------
+train Loss: 0.0453 Acc: 7.8744
+val Loss: 0.0433 Acc: 7.8806
+
+Epoch 5/49
+----------
+train Loss: 0.0444 Acc: 7.8762
+val Loss: 0.0441 Acc: 7.8793
+
+Epoch 6/49
+----------
+train Loss: 0.0437 Acc: 7.8778
+val Loss: 0.0433 Acc: 7.8794
+
+Epoch 7/49
+----------
+train Loss: 0.0432 Acc: 7.8789
+val Loss: 0.0421 Acc: 7.8813
+
+Epoch 8/49
+----------
+train Loss: 0.0428 Acc: 7.8793
+val Loss: 0.0421 Acc: 7.8807
+
+Epoch 9/49
+----------
+train Loss: 0.0423 Acc: 7.8808
+val Loss: 0.0415 Acc: 7.8832
+
+Epoch 10/49
+----------
+train Loss: 0.0418 Acc: 7.8816
+val Loss: 0.0407 Acc: 7.8849
+
+Epoch 11/49
+----------
+train Loss: 0.0413 Acc: 7.8823
+val Loss: 0.0414 Acc: 7.8840
+
+Epoch 12/49
+----------
+train Loss: 0.0411 Acc: 7.8828
+val Loss: 0.0429 Acc: 7.8781
+
+Epoch 13/49
+----------
+train Loss: 0.0405 Acc: 7.8845
+val Loss: 0.0421 Acc: 7.8816
+
+Epoch 14/49
+----------
+train Loss: 0.0403 Acc: 7.8850
+val Loss: 0.0414 Acc: 7.8838
+
+Epoch 15/49
+----------
+train Loss: 0.0399 Acc: 7.8851
+val Loss: 0.0427 Acc: 7.8837
+
+Epoch 16/49
+----------
+train Loss: 0.0395 Acc: 7.8861
+val Loss: 0.0405 Acc: 7.8861
+
+Epoch 17/49
+----------
+train Loss: 0.0394 Acc: 7.8867
+val Loss: 0.0410 Acc: 7.8856
+
+Epoch 18/49
+----------
+train Loss: 0.0389 Acc: 7.8881
+val Loss: 0.0411 Acc: 7.8848
+
+Epoch 19/49
+----------
+train Loss: 0.0389 Acc: 7.8881
+val Loss: 0.0421 Acc: 7.8871
+
+Epoch 20/49
+----------
+train Loss: 0.0385 Acc: 7.8888
+val Loss: 0.0420 Acc: 7.8837
+
+Epoch 21/49
+----------
+train Loss: 0.0384 Acc: 7.8886
+val Loss: 0.0428 Acc: 7.8860
+
+Epoch 22/49
+----------
+train Loss: 0.0379 Acc: 7.8900
+val Loss: 0.0408 Acc: 7.8861
+
+Epoch 23/49
+----------
+train Loss: 0.0378 Acc: 7.8900
+val Loss: 0.0416 Acc: 7.8834
+
+Epoch 24/49
+----------
+train Loss: 0.0376 Acc: 7.8916
+val Loss: 0.0414 Acc: 7.8853
+
+Epoch 25/49
+----------
+train Loss: 0.0371 Acc: 7.8913
+val Loss: 0.0420 Acc: 7.8855
+
+Epoch 26/49
+----------
+train Loss: 0.0370 Acc: 7.8923
+val Loss: 0.0413 Acc: 7.8873
+
+Epoch 27/49
+----------
+train Loss: 0.0368 Acc: 7.8924
+val Loss: 0.0434 Acc: 7.8818
+
+Epoch 28/49
+----------
+train Loss: 0.0365 Acc: 7.8922
+val Loss: 0.0417 Acc: 7.8841
+
+Epoch 29/49
+----------
+train Loss: 0.0363 Acc: 7.8939
+val Loss: 0.0415 Acc: 7.8882
+
+Epoch 30/49
+----------
+train Loss: 0.0362 Acc: 7.8932
+val Loss: 0.0424 Acc: 7.8851
+
+Epoch 31/49
+----------
+train Loss: 0.0359 Acc: 7.8943
+val Loss: 0.0440 Acc: 7.8827
+
+Epoch 32/49
+----------
+train Loss: 0.0357 Acc: 7.8950
+val Loss: 0.0423 Acc: 7.8860
+
+Epoch 33/49
+----------
+train Loss: 0.0355 Acc: 7.8946
+val Loss: 0.0426 Acc: 7.8872
+
+Epoch 34/49
+----------
+train Loss: 0.0354 Acc: 7.8955
+val Loss: 0.0430 Acc: 7.8834
+
+Epoch 35/49
+----------
+train Loss: 0.0352 Acc: 7.8963
+val Loss: 0.0422 Acc: 7.8875
+
+Epoch 36/49
+----------
+train Loss: 0.0349 Acc: 7.8973
+val Loss: 0.0438 Acc: 7.8841
+
+Epoch 37/49
+----------
+train Loss: 0.0348 Acc: 7.8979
+val Loss: 0.0424 Acc: 7.8833
+
+Epoch 38/49
+----------
+train Loss: 0.0347 Acc: 7.8974
+val Loss: 0.0445 Acc: 7.8861
+
+Epoch 39/49
+----------
+train Loss: 0.0345 Acc: 7.8978
+val Loss: 0.0456 Acc: 7.8790
+
+Epoch 40/49
+----------
+train Loss: 0.0341 Acc: 7.8990
+val Loss: 0.0430 Acc: 7.8873
+
+Epoch 41/49
+----------
+train Loss: 0.0341 Acc: 7.8989
+val Loss: 0.0456 Acc: 7.8829
+
+Epoch 42/49
+----------
+train Loss: 0.0340 Acc: 7.8990
+val Loss: 0.0452 Acc: 7.8844
+
+Epoch 43/49
+----------
+train Loss: 0.0339 Acc: 7.9000
+val Loss: 0.0441 Acc: 7.8813
+
+Epoch 44/49
+----------
+train Loss: 0.0336 Acc: 7.9002
+val Loss: 0.0454 Acc: 7.8835
+
+Epoch 45/49
+----------
+train Loss: 0.0333 Acc: 7.8997
+val Loss: 0.0443 Acc: 7.8821
+
+Epoch 46/49
+----------
+train Loss: 0.0334 Acc: 7.9008
+val Loss: 0.0450 Acc: 7.8864
+
+Epoch 47/49
+----------
+train Loss: 0.0332 Acc: 7.9008
+val Loss: 0.0466 Acc: 7.8797
+
+Epoch 48/49
+----------
+train Loss: 0.0330 Acc: 7.9015
+val Loss: 0.0438 Acc: 7.8857
+
+Epoch 49/49
+----------
+train Loss: 0.0328 Acc: 7.9019
+val Loss: 0.0453 Acc: 7.8859
+
+Training complete in 477m 55s
+Best val Acc: 7.888180
