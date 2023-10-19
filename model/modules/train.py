@@ -60,18 +60,18 @@ def train_model(model, dataloaders, criterion, optimizer, device, num_epochs=3):
 
                 # statistics
                 running_loss += loss.item() * batch_input_ids.size(0)
-                running_corrects += torch.sum(preds == batch_labels.data)
+                running_corrects += torch.sum(preds == batch_labels)/batch_labels.shape[0]
 
                 # store predictions and true labels
                 # we're only interested in validation performance
                 if phase == 'val':  
                     epoch_preds.extend(preds.tolist())
-                    epoch_true.extend(batch_labels.data.tolist())
+                    epoch_true.extend(batch_labels.tolist())
 
 
 
             epoch_loss = running_loss / len(dataloaders[phase].dataset)
-            epoch_acc = running_corrects.double() / len(dataloaders[phase].dataset)
+            epoch_acc = (running_corrects.double() / len(dataloaders[phase].dataset)).item()
 
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
 

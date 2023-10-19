@@ -50,13 +50,12 @@ def main(args):
 
     save_model(codeModel, current_dir)
     save_statistics(current_dir, val_acc_history, val_loss_history, train_acc_history, train_loss_history, best_true, best_preds)
-    train_val_plot(current_dir, train_acc_history, val_acc_history, "Accuracy", "Train vs Val")
-    train_val_plot(current_dir, train_loss_history, val_loss_history, "Loss", "Train vs Val")
+    train_val_plot(current_dir, train_acc_history, val_acc_history, "Train vs Val Accuracy", "Accuracy")
+    train_val_plot(current_dir, train_loss_history, val_loss_history, "Train vs Val Loss", "Loss")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Train a model on some data.")
     
-    # Add arguments
     # Add arguments
     parser.add_argument("--CODE_FILES", type=str, default="../data/code_files", help="Path to the code files")
 

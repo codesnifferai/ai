@@ -52,9 +52,7 @@ def save_statistics(current_dir, val_acc_hist, val_loss_hist, train_acc_hist, tr
     confusion_df.to_csv(confusion_path, index=False)
 
 def train_val_plot(current_dir, arrTrain, arrVal, title, stat):
-    for i in range(len(arrTrain)):
-        if (torch.is_tensor(arrTrain[i])): arrTrain[i] = arrTrain[i].cpu().numpy()
-        if (torch.is_tensor(arrVal[i])): arrVal[i] = arrVal[i].cpu().numpy()
+    
     plot_path = os.path.join(current_dir, f"plots/{title} - {stat}.png")
     make_path(plot_path)
     plt.figure(figsize=(6, 5))
