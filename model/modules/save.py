@@ -19,7 +19,7 @@ def save_model(model, current_dir):
 
 def save_statistics(current_dir, val_acc_hist, val_loss_hist, train_acc_hist, train_loss_hist, best_true, best_preds):
     # Save the validation accuracy history
-    val_acc_hist_np = np.array([h.item() for h in val_acc_hist])
+    val_acc_hist_np = np.array([h for h in val_acc_hist])
     val_acc_hist_path = os.path.join(current_dir, "statistics/val_acc_history.csv")
     make_path(val_acc_hist_path)
     np.savetxt(val_acc_hist_path, val_acc_hist_np, delimiter=",")
