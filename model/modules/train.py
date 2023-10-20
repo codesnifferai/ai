@@ -60,7 +60,9 @@ def train_model(model, dataloaders, criterion, optimizer, device, num_epochs=3):
 
                 # statistics
                 running_loss += loss.item() * batch_input_ids.size(0)
-                running_corrects += torch.sum(preds == batch_labels)/batch_labels.shape[0]
+                running_corrects += torch.sum(preds == batch_labels)/batch_labels.shape[1]
+                print(f"running_corrects = {running_corrects}")
+                print
 
                 # store predictions and true labels
                 # we're only interested in validation performance
