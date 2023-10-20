@@ -1,5 +1,7 @@
 data/code_files/*
 .venv/
+__pycache__/
+*.pyc
 ./**/__pycache__/
 data/__pycache__/__init__.cpython-310.pyc
 data/__pycache__/dataset.cpython-310.pyc
