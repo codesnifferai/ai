@@ -3,6 +3,9 @@ import torch.nn as nn
 import torch
 
 class CodeSnifferNetwork(nn.Module):
+    smells = ['Brain Class', 'Data Class',
+            'Futile Abstract Pipeline', 'Futile Hierarchy', 'God Class', 
+            'Hierarchy Duplication', 'Model Class', 'Schizofrenic Class']
     def __init__(self, num_labels=8):
         super(CodeSnifferNetwork, self).__init__()
 
